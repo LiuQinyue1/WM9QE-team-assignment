@@ -1,4 +1,4 @@
-﻿Analysis objective: Describe the lifetime distributions of the old and new components and compare their mean lifetimes.
+Analysis objective: Describe the lifetime distributions of the old and new components and compare their mean lifetimes.
 Unit of observation: Each value represents the lifetime of one component, measured in hours. The old and new components form two groups analyzed as independent samples. Values in the same row do not represent paired observations.
 
 0. Clear the environment
@@ -142,23 +142,23 @@ The new group's circle lies to the right of the old group's circle, with a mean 
 Interpretation: The plot shows a higher central location for the new group, together with estimation uncertainty. The difference between the group means should be assessed using the test and confidence interval for the mean difference.
 Reference sources: WM9QE Week2 Normality Hypothesis Parametric Tests; [WM9QE] Seminar - MATLAB Programming-c; Supplementary material
 
-7.4 Two-sided Welch t-test
-Test whether the population mean lifetimes of the two groups differ, allowing unequal population variances.
+7.4 Two-sided pooled t-test
+Test whether the population mean lifetimes of the two groups differ, assuming equal population variances.
 H0: The two groups have equal population mean lifetimes, μ_new = μ_old.
 H1: The two groups have different population mean lifetimes, μ_new ≠ μ_old.
-The mean difference, new group minus old group, is 7.05 hours, with t = 1.8162, approximately 37.9773 degrees of freedom, and a two-sided p-value of 0.0772.
-The 95% confidence interval for the mean difference is -0.8084 to 14.9084 hours.
+The mean difference, new group minus old group, is 7.05 hours, with t = 1.8162, 38 degrees of freedom, and a two-sided p-value of 0.0772.
+The 95% confidence interval for the mean difference is -0.8083 to 14.9083 hours.
 Because p exceeds 0.05 and the confidence interval for the difference includes 0, do not reject H0.
 Interpretation: The available data are insufficient to conclude at the 5% significance level that the two population mean lifetimes differ.
 Reference sources: WM9QE Week2 Normality Hypothesis Parametric Tests; Supplementary material
 
-7.5 Two-sided Welch t-test plot
+7.5 Two-sided pooled t-test plot
 The shaded areas represent the tail probabilities to the left of -1.8162 and to the right of 1.8162. Together, they give the two-sided p-value of 0.0772.
 The critical values for the 5% two-sided test are approximately -2.0244 and 2.0244. The observed t = 1.8162 lies between them.
 Interpretation: The observed statistic does not enter the rejection region, consistent with the decision not to reject H0 in the two-sided test.
 Reference sources: WM9QE Week2 Normality Hypothesis Parametric Tests; [WM9QE] Seminar - MATLAB Programming-c; Supplementary material
 
-7.6 Right-tailed Welch t-test
+7.6 Right-tailed pooled t-test
 Test whether the new group has a higher population mean lifetime than the old group.
 H0: The new group's population mean lifetime is no higher than the old group's, μ_new ≤ μ_old.
 H1: The new group's population mean lifetime is higher than the old group's, μ_new > μ_old.
@@ -166,7 +166,7 @@ The observed t = 1.8162, and the right-tailed p-value is 0.0386. Because this is
 Interpretation: If this one-sided hypothesis was specified in advance, the result supports a higher population mean lifetime for the new group.
 Reference sources: WM9QE Week2 Normality Hypothesis Parametric Tests; Supplementary material
 
-7.7 Right-tailed Welch t-test plot
+7.7 Right-tailed pooled t-test plot
 The shaded area to the right of the observed t = 1.8162 represents the right-tailed p-value, approximately 0.0386.
 The critical value for the 5% right-tailed test is approximately 1.6860. The observed t = 1.8162 exceeds this value and falls in the right-tail rejection region.
 Interpretation: The plot is consistent with the right-tailed test's rejection of H0 and support for a higher population mean lifetime for the new group.
@@ -196,7 +196,7 @@ Relationships between the test results
 
 The normality tests concern distribution shape, the variance tests concern dispersion, and the mean tests concern mean lifetime. The normality and variance tests do not reject H0, but this does not imply equal population mean lifetimes.
 
-The two-sided and right-tailed Welch t-tests have different alternative hypotheses and critical values. The observed t = 1.8162 exceeds the right-tailed critical value of 1.6860 but does not exceed the positive two-sided critical value of 2.0244. Therefore, the right-tailed test rejects H0, while the two-sided test does not reject H0. The test direction should be specified in advance and should not be changed to one-sided based on the two-sided result.
+The two-sided and right-tailed pooled t-tests have different alternative hypotheses and critical values. The observed t = 1.8162 exceeds the right-tailed critical value of 1.6860 but does not exceed the positive two-sided critical value of 2.0244. Therefore, the right-tailed test rejects H0, while the two-sided test does not reject H0. The test direction should be specified in advance and should not be changed to one-sided based on the two-sided result.
 
 The new group's sample mean lifetime is 7.05 hours higher, an increase of approximately 21.1%. Under the prespecified right-tailed hypothesis, the result reaches the 5% significance level; the two-sided comparison does not reach this level.
 
@@ -250,8 +250,8 @@ p is above 0.05, so the difference in ranks between the groups does not reach st
 Reference sources: Supplementary material
 
 10. Sensitivity analysis
-Retain the full-data analysis results and create an additional scenario that temporarily omits the old group's 64-hour observation, comparing the mean difference, confidence interval, and two-sided Welch test results.
-With all observations retained, the old group has 20 observations, the mean difference is 7.05 hours, the 95% confidence interval is -0.8084 to 14.9084 hours, and p = 0.0772.
-After temporarily omitting 64, the old group has 19 observations, with a mean of 31.8421 hours and a standard deviation of 10.4097 hours; the new-minus-old mean difference is 8.6579 hours, the 95% confidence interval is 1.3350 to 15.9808 hours, and p = 0.0218.
+Retain the full-data analysis results and create an additional scenario that temporarily omits the old group's 64-hour observation, comparing the mean difference, confidence interval, and two-sided pooled test results.
+With all observations retained, the old group has 20 observations, the mean difference is 7.05 hours, the 95% confidence interval is -0.8083 to 14.9083 hours, and p = 0.0772.
+After temporarily omitting 64, the old group has 19 observations, with a mean of 31.8421 hours and a standard deviation of 10.4097 hours; the new-minus-old mean difference is 8.6579 hours, the 95% confidence interval is 1.3082 to 16.0076 hours, and p = 0.0222.
 The two-sided test changes from not reaching the 0.05 significance level to reaching it, indicating that the conclusion is sensitive to the old group's observation of 64. This observation raises the old group's mean and dispersion, reducing the ability to detect a difference between the group means.
 Reference sources: [WM9QE] Seminar - MATLAB Programming-c; WM9QE Week2 Normality Hypothesis Parametric Tests; Supplementary material
